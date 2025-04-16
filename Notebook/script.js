@@ -2,6 +2,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // 編輯狀態記錄變數
     let editingSectionId = null;
 
+    // 獲取按鈕元素
+    const refreshButton = document.querySelector('.refresh-button');
+    const addButton = document.querySelector('.add-button');
+    
     // 頁籤切換功能
     const tabs = document.querySelectorAll('.tab');
     const contentSections = document.querySelectorAll('.content-section');
