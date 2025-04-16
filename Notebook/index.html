@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Notebook</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- 添加 LXGW WenKai TC 字體 -->
+    <link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-tc-webfont@1.0.0/style.css" rel="stylesheet">
+    <style>
+        .chinese-text, h3, p, .note-date, label, .task-date, .tag {
+            font-family: "LXGW WenKai TC", sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="notebook-container">
+        <header class="notebook-header">
+            <div class="title-section">
+                <h1>My Digital Notebook</h1>
+                <p>歡迎回來，記錄您的想法和靈感</p>
+            </div>
+            <nav class="tabs-section">
+                <div class="tab active" data-tab="notes">
+                    <i class="fas fa-book"></i> Notes
+                </div>
+                <div class="tab" data-tab="tasks">
+                    <i class="fas fa-tasks"></i> Tasks
+                </div>
+                <div class="tab" data-tab="ideas">
+                    <i class="fas fa-lightbulb"></i> Ideas
+                </div>
+            </nav>
+        </header>
+        
+        <main class="notebook-content">
+            <section class="content-section active" id="notes-content">
+                <div class="section-title">
+                    <h2>Recent Notes</h2>
+                </div>
+                <div class="notes-list">
+                    <div class="note-item">
+                        <h3>會議筆記</h3>
+                        <p>討論專案進度與未來規劃，需要準備下週的報告。</p>
+                        <div class="note-date">2025年4月16日</div>
+                    </div>
+                    <div class="note-item">
+                        <h3>學習計畫</h3>
+                        <p>前端框架的新特性研究，重點關注性能優化和狀態管理。</p>
+                        <div class="note-date">2025年4月15日</div>
+                    </div>
+                    <div class="note-item">
+                        <h3>讀書心得</h3>
+                        <p>《深入理解計算機系統》第五章總結與個人見解。</p>
+                        <div class="note-date">2025年4月14日</div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="content-section" id="tasks-content">
+                <div class="section-title">
+                    <h2>Todo List</h2>
+                </div>
+                <div class="tasks-list">
+                    <div class="task-item">
+                        <input type="checkbox" id="task1">
+                        <label for="task1">完成專案提案文件</label>
+                        <span class="task-date">2025/04/18</span>
+                    </div>
+                    <div class="task-item completed">
+                        <input type="checkbox" id="task2" checked>
+                        <label for="task2">預約客戶會議</label>
+                        <span class="task-date">2025/04/15</span>
+                    </div>
+                    <div class="task-item">
+                        <input type="checkbox" id="task3">
+                        <label for="task3">更新個人網站內容</label>
+                        <span class="task-date">2025/04/20</span>
+                    </div>
+                    <div class="task-item completed">
+                        <input type="checkbox" id="task4" checked>
+                        <label for="task4">回覆重要郵件</label>
+                        <span class="task-date">2025/04/14</span>
+                    </div>
+                    <div class="task-item">
+                        <input type="checkbox" id="task5">
+                        <label for="task5">準備週報內容</label>
+                        <span class="task-date">2025/04/19</span>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="content-section" id="ideas-content">
+                <div class="section-title">
+                    <h2>Quick Notes</h2>
+                </div>
+                <div class="ideas-list">
+                    <div class="idea-item">
+                        <p>使用人工智慧改善用戶體驗的新方案</p>
+                        <div class="idea-tags">
+                            <span class="tag">創新</span>
+                            <span class="tag">AI</span>
+                        </div>
+                    </div>
+                    <div class="idea-item">
+                        <p>自動化資料分析工具開發計畫</p>
+                        <div class="idea-tags">
+                            <span class="tag">工具</span>
+                            <span class="tag">數據</span>
+                        </div>
+                    </div>
+                    <div class="idea-item">
+                        <p>響應式設計的最佳實踐研究方向</p>
+                        <div class="idea-tags">
+                            <span class="tag">設計</span>
+                            <span class="tag">前端</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <div class="action-buttons">
+            <button class="action-button edit-button">
+                <i class="fas fa-pencil-alt"></i>
+            </button>
+            <button class="action-button refresh-button">
+                <i class="fas fa-sync-alt"></i>
+            </button>
+            <button class="action-button add-button">
+                <i class="fas fa-plus"></i>
+            </button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

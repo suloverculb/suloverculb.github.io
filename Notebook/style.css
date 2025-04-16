@@ -1,0 +1,434 @@
+/* 全域變數 */
+:root {
+    --bg-color: #FFFBF2;
+    --text-color: #333333;
+    --title-color: #1F4E79;
+    --completed-color: #AAAAAA;
+    --accent-color: #D9534F;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --paper-line-color: rgba(0, 0, 100, 0.05);
+    --paper-margin-color: rgba(255, 0, 0, 0.2);
+    --max-width: 800px;
+    --padding: 20px;
+    --block-spacing: 24px;
+    --tab-spacing: 16px;
+    --button-bg: #1F4E79;
+    --button-hover: #D9534F;
+    --editing-bg: rgba(255, 255, 200, 0.3);
+}
+
+/* 基本樣式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Patrick Hand', cursive;
+    color: var(--text-color);
+    background-color: #f0f0f0;
+    line-height: 1.6;
+}
+
+/* 筆記本紙張樣式 */
+.notebook-container {
+    max-width: var(--max-width);
+    margin: 40px auto;
+    background-color: var(--bg-color);
+    border-radius: 5px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    position: relative;
+    overflow: hidden;
+    min-height: 80vh;
+    
+    /* 紙張效果 - 水平線條 */
+    background-image: 
+        /* 左側紅線 */
+        linear-gradient(to right, 
+            var(--paper-margin-color) 35px,
+            transparent 35px
+        ),
+        /* 橫線 */
+        repeating-linear-gradient(
+            var(--bg-color),
+            var(--bg-color) 31px,
+            var(--paper-line-color) 31px,
+            var(--paper-line-color) 32px
+        );
+    
+    /* 紙張效果 - 紙張材質 */
+    background-attachment: local;
+    background-position: 0 0;
+}
+
+/* 標題區域 */
+.notebook-header {
+    padding: var(--padding);
+    padding-left: calc(var(--padding) + 20px);
+    position: relative;
+}
+
+.title-section {
+    margin-bottom: var(--block-spacing);
+    padding-left: 30px;
+}
+
+.title-section h1 {
+    font-family: 'Shadows Into Light', cursive;
+    color: var(--title-color);
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.title-section p {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+/* 頁籤區域 */
+.tabs-section {
+    display: flex;
+    border-bottom: 2px solid var(--paper-line-color);
+    padding-bottom: 10px;
+    margin-bottom: var(--tab-spacing);
+}
+
+.tab {
+    padding: 8px 15px;
+    margin-right: 15px;
+    cursor: pointer;
+    border-radius: 5px 5px 0 0;
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 1.2rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.tab::after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background-color: var(--paper-margin-color);
+    transform: rotate(10deg);
+    opacity: 0;
+}
+
+.tab:not(:last-child)::after {
+    opacity: 1;
+}
+
+.tab i {
+    margin-right: 5px;
+    color: var(--accent-color);
+}
+
+.tab.active {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: var(--title-color);
+    font-weight: bold;
+    transform: translateY(-3px);
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+/* 內容區域 */
+.notebook-content {
+    padding: 0 var(--padding) var(--padding) calc(var(--padding) + 20px);
+}
+
+.content-section {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.content-section.active {
+    display: block;
+}
+
+.section-title {
+    margin-bottom: 15px;
+    padding-left: 30px;
+}
+
+.section-title h2 {
+    font-family: 'Shadows Into Light', cursive;
+    color: var(--title-color);
+    font-size: 1.8rem;
+    position: relative;
+}
+
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 50px;
+    height: 2px;
+    background-color: var(--accent-color);
+}
+
+/* 筆記項目樣式 */
+.notes-list {
+    display: grid;
+    gap: 20px;
+}
+
+.note-item {
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    transition: transform 0.2s ease;
+}
+
+.note-item:hover {
+    transform: translateY(-3px);
+}
+
+.note-item h3 {
+    color: var(--title-color);
+    margin-bottom: 8px;
+}
+
+.note-date {
+    text-align: right;
+    font-size: 0.9rem;
+    color: var(--completed-color);
+    margin-top: 10px;
+}
+
+/* 編輯模式樣式 */
+.note-item.editing, .task-item.editing, .idea-item.editing {
+    background-color: var(--editing-bg);
+    box-shadow: 0 3px 8px var(--shadow-color);
+}
+
+.note-item.editing h3, .note-item.editing p, .idea-item.editing p {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 5px;
+    border-radius: 3px;
+    min-height: 20px;
+    outline: 1px solid var(--title-color);
+}
+
+.note-item.editing h3:focus, .note-item.editing p:focus, .idea-item.editing p:focus {
+    outline: 2px solid var(--accent-color);
+}
+
+.edit-task-input, .edit-date-input, .edit-tag-input {
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid var(--title-color);
+    margin-bottom: 5px;
+    width: 100%;
+    font-family: "LXGW WenKai TC", sans-serif;
+}
+
+.edit-task-input {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.edit-date-input {
+    width: 130px;
+}
+
+.note-edit-controls, .task-edit-controls, .idea-edit-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.note-edit-controls button, .task-edit-controls button, .idea-edit-controls button {
+    background-color: var(--button-bg);
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.note-edit-controls button:hover, .task-edit-controls button:hover, .idea-edit-controls button:hover {
+    background-color: var(--button-hover);
+}
+
+.save-note, .save-task, .save-idea {
+    background-color: #28a745 !important;
+}
+
+.cancel-edit, .cancel-task-edit, .cancel-idea-edit {
+    background-color: #6c757d !important;
+}
+
+.save-note:hover, .save-task:hover, .save-idea:hover {
+    background-color: #218838 !important;
+}
+
+.cancel-edit:hover, .cancel-task-edit:hover, .cancel-idea-edit:hover {
+    background-color: #5a6268 !important;
+}
+
+/* 任務項目樣式 */
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: all 0.2s ease;
+}
+
+.task-item:hover {
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.task-item input[type="checkbox"] {
+    margin-right: 15px;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--title-color);
+    border-radius: 3px;
+    cursor: pointer;
+    position: relative;
+}
+
+.task-item input[type="checkbox"]:checked::after {
+    content: '\2713';
+    position: absolute;
+    top: -2px;
+    left: 3px;
+    color: var(--accent-color);
+    font-size: 16px;
+}
+
+.task-item label {
+    flex-grow: 1;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.task-item.completed label {
+    text-decoration: line-through;
+    color: var(--completed-color);
+}
+
+.task-date {
+    font-size: 0.85rem;
+    color: var(--completed-color);
+}
+
+/* 想法項目樣式 */
+.idea-item {
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.idea-tags {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.tag {
+    background-color: var(--title-color);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+}
+
+/* 操作按鈕 */
+.action-buttons {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.action-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--title-color);
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 3px 10px var(--shadow-color);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.action-button:hover {
+    transform: translateY(-3px);
+    background-color: var(--accent-color);
+}
+
+.add-button {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+}
+
+/* 動畫效果 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .notebook-container {
+        margin: 20px;
+        width: auto;
+    }
+    
+    .title-section h1 {
+        font-size: 2rem;
+    }
+    
+    .action-buttons {
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tabs-section {
+        flex-wrap: wrap;
+    }
+    
+    .tab {
+        margin-bottom: 10px;
+    }
+    
+    .title-section h1 {
+        font-size: 1.8rem;
+    }
+    
+    .action-button {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .add-button {
+        width: 55px;
+        height: 55px;
+    }
+}
