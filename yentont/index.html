@@ -14,7 +14,6 @@
     <div class="container">
         <header>
             <h1>日幣換算台幣計算器</h1>
-            <p class="subtitle">簡單、快速的貨幣轉換工具</p>
         </header>
 
         <main>
@@ -30,9 +29,14 @@
                 <div class="currency-input">
                     <div class="input-group">
                         <label for="jpy-amount">日幣金額 (JPY)</label>
-                        <div class="input-with-icon">
-                            <i class="fas fa-yen-sign"></i>
-                            <input type="number" id="jpy-amount" placeholder="請輸入日幣金額" min="0">
+                        <div class="input-wrapper">
+                            <div class="input-with-icon">
+                                <i class="fas fa-yen-sign"></i>
+                                <input type="number" id="jpy-amount" placeholder="請輸入日幣金額" min="0">
+                            </div>
+                            <button id="clear-btn" class="secondary-btn clear-btn">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
                         </div>
                     </div>
                     <div class="result-container">
@@ -45,9 +49,6 @@
                       <div class="buttons">
                         <button id="convert-btn" class="primary-btn">
                             <i class="fas fa-sync-alt"></i> 更新匯率
-                        </button>
-                        <button id="clear-btn" class="secondary-btn">
-                            <i class="fas fa-trash-alt"></i> 清除
                         </button>
                     </div>
                 </div>

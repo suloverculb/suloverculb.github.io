@@ -125,8 +125,16 @@ header h1 {
     font-weight: 500;
 }
 
+/* 新增包裹輸入框和清除按鈕的容器 */
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 .input-with-icon {
     position: relative;
+    flex: 1;
 }
 
 .input-with-icon i {
@@ -149,6 +157,16 @@ header h1 {
 .input-with-icon input:focus {
     outline: none;
     border-color: var(--primary-color);
+}
+
+/* 清除按鈕特定樣式 */
+.clear-btn {
+    height: 48px;
+    width: 48px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* 按鈕樣式 */
@@ -288,5 +306,17 @@ footer {
 
     .result-value {
         font-size: 1.6rem;
+    }
+    
+    /* 響應式輸入框和清除按鈕 */
+    .input-wrapper {
+        flex-direction: row;
+        width: 100%;
+    }
+    
+    .clear-btn {
+        height: 42px;
+        width: 42px;
+        min-width: 42px;
     }
 }
