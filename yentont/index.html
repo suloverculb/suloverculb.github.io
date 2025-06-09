@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日幣換算台幣計算器</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- 使用 Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- 使用 Google Fonts CDN -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>日幣換算台幣計算器</h1>
+            <p class="subtitle">簡單、快速的貨幣轉換工具</p>
+        </header>
+
+        <main>
+            <section class="converter-card">
+                <div class="rate-info">
+                    <span id="last-update">最後更新時間: 載入中...</span>
+                    <div class="current-rate">
+                        <span>目前匯率:</span>
+                        <span id="exchange-rate">載入中...</span>
+                    </div>
+                </div>
+
+                <div class="currency-input">
+                    <div class="input-group">
+                        <label for="jpy-amount">日幣金額 (JPY)</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-yen-sign"></i>
+                            <input type="number" id="jpy-amount" placeholder="請輸入日幣金額" min="0">
+                        </div>
+                    </div>
+                      <div class="buttons">
+                        <button id="convert-btn" class="primary-btn">
+                            <i class="fas fa-sync-alt"></i> 更新匯率
+                        </button>
+                        <button id="clear-btn" class="secondary-btn">
+                            <i class="fas fa-trash-alt"></i> 清除
+                        </button>
+                    </div>
+
+                    <div class="result-container">
+                        <div class="result-label">換算結果 (TWD)</div>
+                        <div class="result-value" id="twd-result">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span id="result-amount">0.00</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="instructions">                <h2>使用說明</h2>
+                <ol>
+                    <li>在輸入欄位中輸入日幣金額（會自動即時換算）</li>
+                    <li>結果會顯示在下方的台幣金額欄位</li>
+                    <li>點擊「更新匯率」按鈕可手動更新最新匯率</li>
+                    <li>使用「清除」按鈕重新開始</li>
+                </ol>
+                <div class="tips">
+                    <h3>小提示</h3>
+                    <p>匯率每次重新載入頁面時都會自動更新，您也可以隨時點擊「更新匯率」按鈕手動更新</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 日幣換算台幣計算器 | 以純前端技術打造</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

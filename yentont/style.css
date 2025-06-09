@@ -1,0 +1,292 @@
+/* 使用CSS變數管理色彩系統 */
+:root {
+    /* 主要色彩 */
+    --primary-color: #ff4d4d;       /* 日本紅 */
+    --primary-dark: #d63939;
+    --primary-light: #ff7373;
+    
+    /* 輔助色彩 */
+    --secondary-color: #2b5797;     /* 台灣藍 */
+    --secondary-dark: #1e3c6e;
+    --secondary-light: #5278b7;
+    
+    /* 中性色調 */
+    --neutral-dark: #333333;
+    --neutral-medium: #777777;
+    --neutral-light: #f5f5f5;
+    --neutral-border: #e0e0e0;
+    
+    /* 功能色彩 */
+    --success-color: #4caf50;
+    --warning-color: #ff9800;
+    --error-color: #f44336;
+    
+    /* 背景和文字 */
+    --bg-color: #f9f9f9;
+    --text-color: #333333;
+    --text-light: #666666;
+    
+    /* 尺寸和間距 */
+    --border-radius: 8px;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --container-padding: 20px;
+    --section-spacing: 30px;
+    
+    /* 字體設置 */
+    --main-font: 'Noto Sans TC', sans-serif;
+}
+
+/* 基本樣式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--main-font);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    padding: var(--container-padding);
+}
+
+/* 頭部樣式 */
+header {
+    text-align: center;
+    margin-bottom: var(--section-spacing);
+}
+
+header h1 {
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    font-size: 2.2rem;
+}
+
+.subtitle {
+    color: var(--text-light);
+    font-size: 1.1rem;
+}
+
+/* 主要卡片樣式 */
+.converter-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    padding: 25px;
+    margin-bottom: var(--section-spacing);
+}
+
+.rate-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--neutral-border);
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#last-update {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.current-rate {
+    font-weight: 500;
+}
+
+#exchange-rate {
+    color: var(--secondary-color);
+    font-weight: 700;
+    margin-left: 5px;
+}
+
+/* 輸入區域樣式 */
+.currency-input {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.input-with-icon {
+    position: relative;
+}
+
+.input-with-icon i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--neutral-medium);
+}
+
+.input-with-icon input {
+    width: 100%;
+    padding: 12px 15px 12px 40px;
+    border: 2px solid var(--neutral-border);
+    border-radius: var(--border-radius);
+    font-size: 1.1rem;
+    transition: border-color 0.3s;
+}
+
+.input-with-icon input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* 按鈕樣式 */
+.buttons {
+    display: flex;
+    gap: 15px;
+}
+
+button {
+    padding: 12px 20px;
+    border-radius: var(--border-radius);
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+    font-size: 1rem;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: white;
+    flex: 1;
+}
+
+.primary-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+.secondary-btn {
+    background-color: var(--neutral-light);
+    color: var(--text-color);
+}
+
+.secondary-btn:hover {
+    background-color: var(--neutral-border);
+}
+
+/* 結果區域樣式 */
+.result-container {
+    background-color: var(--neutral-light);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    margin-top: 10px;
+}
+
+.result-label {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 10px;
+}
+
+.result-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.result-value i {
+    font-size: 1.6rem;
+}
+
+/* 使用說明區塊 */
+.instructions {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 25px;
+    box-shadow: var(--card-shadow);
+    margin-bottom: var(--section-spacing);
+}
+
+.instructions h2 {
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.instructions ol {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.instructions li {
+    margin-bottom: 8px;
+}
+
+.tips {
+    background-color: var(--neutral-light);
+    padding: 15px;
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--primary-color);
+}
+
+.tips h3 {
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+/* 頁腳樣式 */
+footer {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-top: 30px;
+}
+
+/* 響應式設計 */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .converter-card, .instructions {
+        padding: 20px;
+    }
+
+    .rate-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .result-value {
+        font-size: 1.6rem;
+    }
+}
