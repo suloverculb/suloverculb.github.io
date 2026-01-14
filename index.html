@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suloverculb - 專案導航</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        h1 {
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .project-title {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+
+        .project-description {
+            font-size: 0.95em;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+            opacity: 0.8;
+            font-size: 0.9em;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .subtitle {
+                font-size: 1em;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>✨ Suloverculb</h1>
+            <p class="subtitle">探索我的創意專案</p>
+        </header>
+
+        <div class="projects-grid">
+            <a href="https://suloverculb.github.io/Notebook/index.html" class="project-card">
+                <span class="project-icon">📔</span>
+                <h2 class="project-title">Digital Notebook</h2>
+                <p class="project-description">數位筆記本 - 記錄您的想法、任務和靈感的完美工具</p>
+            </a>
+
+            <a href="https://suloverculb.github.io/coffee/index.html" class="project-card">
+                <span class="project-icon">☕</span>
+                <h2 class="project-title">CAFÉ À JOUR</h2>
+                <p class="project-description">光之日咖啡 - 享受每一道光，啜飲每一口生活</p>
+            </a>
+
+            <a href="https://suloverculb.github.io/cuteCalc/index.html" class="project-card">
+                <span class="project-icon">🧮</span>
+                <h2 class="project-title">卡哇伊計算機</h2>
+                <p class="project-description">用萌萌的方式，算出聰明生活！</p>
+            </a>
+
+            <a href="https://suloverculb.github.io/eatWhat/index.html" class="project-card">
+                <span class="project-icon">🍽️</span>
+                <h2 class="project-title">吃什麼</h2>
+                <p class="project-description">解決選擇困難症，隨機推薦美食選擇</p>
+            </a>
+
+            <a href="https://suloverculb.github.io/emoji%20Letter/index.html" class="project-card">
+                <span class="project-icon">✉️</span>
+                <h2 class="project-title">Emoji Letter</h2>
+                <p class="project-description">用表情符號寫信，讓溝通更有趣</p>
+            </a>
+
+            <a href="https://suloverculb.github.io/yentont/index.html" class="project-card">
+                <span class="project-icon">🎨</span>
+                <h2 class="project-title">Yentont</h2>
+                <p class="project-description">創意設計專案</p>
+            </a>
+
+            <a href="https://suloverculb.github.io/dataInput/index.html" class="project-card">
+                <span class="project-icon">📊</span>
+                <h2 class="project-title">Data Input</h2>
+                <p class="project-description">資料輸入工具</p>
+            </a>
+        </div>
+
+        <footer class="footer">
+            <p>© 2026 Suloverculb | Made with ❤️</p>
+        </footer>
+    </div>
+</body>
+</html>
